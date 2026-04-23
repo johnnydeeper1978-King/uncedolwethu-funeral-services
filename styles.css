@@ -1236,3 +1236,53 @@ img { max-width: 100%; height: auto; }
   .section-header p  { font-size: .9rem; }
   .section { padding: 64px 0; }
 }
+
+/* =========================================================
+   PHONE-SPECIFIC REFINEMENTS
+   ========================================================= */
+
+/* Tighter section spacing at tablet / large-phone range */
+@media (max-width: 768px) {
+  .section { padding: 72px 0; }
+  .section-header { margin-bottom: 36px; }
+}
+
+/* Small phones (≤ 480px) */
+@media (max-width: 480px) {
+  .section { padding: 52px 0; }
+  .section-header { margin-bottom: 28px; }
+  .container { padding: 0 18px; }
+
+  /* Plan cards — tighter inner padding */
+  .plan-header { padding: 20px 16px; }
+  .plan-body   { padding: 20px 16px; }
+  .price-amount { font-size: 2rem; }
+
+  /* Benefits icon blocks */
+  .benefits-main-header,
+  .dependents-header { padding: 16px 18px; }
+  .benefits-icon-grid,
+  .dependents-grid { padding: 14px; gap: 10px; }
+
+  /* Additional service cards */
+  .add-service-card { padding: 18px 14px; }
+
+  /* Contact form */
+  .contact-form { padding: 20px 16px; }
+
+  /* WA banner phone numbers — stack vertically */
+  .wa-banner-phones { flex-direction: column; align-items: center; gap: 10px; }
+}
+
+/* Very small phones (≤ 380px) */
+@media (max-width: 380px) {
+  .section { padding: 44px 0; }
+  .container { padding: 0 14px; }
+  .hero-content { padding: 90px 14px 48px; }
+  .hero-content h1 { font-size: clamp(1.7rem, 9vw, 2.2rem); }
+  .plan-header { padding: 16px 12px; }
+  .plan-body   { padding: 16px 12px; }
+  .contact-form { padding: 18px 12px; }
+  .section-header h2 { font-size: 1.45rem; }
+  .slideshow { height: 260px; }
+}
