@@ -965,3 +965,270 @@ img { max-width: 100%; display: block; }
   0%, 100% { transform: scale(1); opacity: .6; }
   50% { transform: scale(1.15); opacity: 0; }
 }
+
+/* =========================================================
+   DARK / LIGHT MODE TOGGLE BUTTON
+   ========================================================= */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--off-white);
+  color: var(--green);
+  cursor: pointer;
+  transition: all var(--transition);
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+.theme-toggle:hover {
+  background: var(--green-light);
+  border-color: var(--green);
+  transform: rotate(20deg);
+}
+.theme-toggle svg { width: 18px; height: 18px; }
+
+/* Show moon in light mode, sun in dark mode */
+.icon-sun  { display: none; }
+.icon-moon { display: block; }
+[data-theme="dark"] .icon-sun  { display: block; }
+[data-theme="dark"] .icon-moon { display: none; }
+
+/* Smooth theme transition on every element */
+*, *::before, *::after {
+  transition: background-color .35s ease, border-color .35s ease, color .2s ease;
+}
+
+/* =========================================================
+   DARK MODE VARIABLES & OVERRIDES
+   ========================================================= */
+[data-theme="dark"] {
+  --white:       #0f1a12;
+  --off-white:   #162218;
+  --text:        #e4ede6;
+  --text-muted:  #8aab8e;
+  --border:      #2c4433;
+  --green-light: #1a2e20;
+  --shadow:      0 4px 24px rgba(0,0,0,.4);
+  --shadow-lg:   0 8px 48px rgba(0,0,0,.5);
+}
+
+/* Navbar */
+[data-theme="dark"] .navbar {
+  background: rgba(15,26,18,.97);
+  border-bottom-color: #2c4433;
+}
+
+/* Cards */
+[data-theme="dark"] .plan-card,
+[data-theme="dark"] .add-service-card,
+[data-theme="dark"] .contact-form,
+[data-theme="dark"] .benefits-col,
+[data-theme="dark"] .gallery-card,
+[data-theme="dark"] .gallery-cta-strip {
+  background: #162218;
+  border-color: #2c4433;
+}
+
+/* Plan card body */
+[data-theme="dark"] .plan-body { background: #162218; }
+[data-theme="dark"] .plan-body ul li { color: var(--text-muted); border-bottom-color: #2c4433; }
+
+/* Trust bar */
+[data-theme="dark"] .trust-bar { background: #0f1a12; border-bottom-color: #2c4433; }
+[data-theme="dark"] .trust-icon { background: #1a2e20; }
+
+/* Form inputs */
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+  background: #1a2e20;
+  border-color: #2c4433;
+  color: var(--text);
+}
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group textarea:focus {
+  background: #1f3527;
+  border-color: var(--green);
+}
+
+/* Benefit items */
+[data-theme="dark"] .benefit-item {
+  background: #1a2e20;
+  border-color: #2c4433;
+  color: var(--text);
+}
+[data-theme="dark"] .benefit-item:hover {
+  background: #1f3527;
+  border-color: var(--green);
+}
+
+/* Section alt */
+[data-theme="dark"] .section-alt { background: #111d14; }
+
+/* About mission box */
+[data-theme="dark"] .about-mission {
+  background: #1a2e20;
+  border-color: #2c4433;
+}
+
+/* Theme toggle in dark mode */
+[data-theme="dark"] .theme-toggle {
+  background: #1a2e20;
+  border-color: #2c4433;
+  color: #f0c040;
+}
+[data-theme="dark"] .theme-toggle:hover {
+  background: #1f3527;
+  border-color: var(--green);
+}
+
+/* Gallery labels stay readable */
+[data-theme="dark"] .gallery-cta-text h4 { color: var(--text); }
+[data-theme="dark"] .gallery-cta-text p  { color: var(--text-muted); }
+
+/* Contact icons */
+[data-theme="dark"] .contact-icon { background: #1a2e20; }
+
+/* Mobile nav */
+[data-theme="dark"] .nav-links {
+  background: #0f1a12;
+  border-bottom-color: #2c4433;
+}
+
+/* Slide ticker */
+[data-theme="dark"] .slide-ticker { background: #0a1a0d; }
+}
+
+/* =========================================================
+   MOBILE RESPONSIVENESS — COMPREHENSIVE FIXES
+   ========================================================= */
+
+/* ---- Base: prevent horizontal overflow on all screens ---- */
+html, body { overflow-x: hidden; width: 100%; }
+img { max-width: 100%; height: auto; }
+
+/* ---- Navbar mobile: keep toggle + CTA visible ---- */
+@media (max-width: 900px) {
+  .nav-container { gap: 12px; }
+  .theme-toggle  { margin-left: auto; }
+  .nav-cta       { display: none; }
+}
+
+/* ---- Hero ---- */
+@media (max-width: 600px) {
+  .hero-content { padding: 100px 20px 60px; }
+  .hero-content h1 { font-size: clamp(1.9rem, 8vw, 2.8rem); }
+  .hero-content p  { font-size: .95rem; }
+  .hero-btns { flex-direction: column; align-items: center; gap: 12px; }
+  .hero-btns .btn { width: 100%; justify-content: center; }
+}
+
+/* ---- Trust bar ---- */
+@media (max-width: 480px) {
+  .trust-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .trust-item { padding: 16px 8px; }
+  .trust-item h3 { font-size: .85rem; }
+  .trust-item p  { font-size: .75rem; }
+}
+
+/* ---- About ---- */
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-img-wrap { max-width: 280px; margin: 0 auto; }
+}
+@media (max-width: 480px) {
+  .about-content h2 { font-size: 1.6rem; }
+  .about-mission { flex-direction: column; gap: 12px; }
+}
+
+/* ---- Cover plans ---- */
+@media (max-width: 1024px) {
+  .plans-grid { grid-template-columns: repeat(2, 1fr); }
+  .plan-featured { transform: none; }
+}
+@media (max-width: 560px) {
+  .plans-grid { grid-template-columns: 1fr; }
+  .price-amount { font-size: 2.2rem; }
+}
+
+/* ---- Additional services ---- */
+@media (max-width: 640px) {
+  .additional-services { grid-template-columns: 1fr; }
+  .add-service-card { flex-direction: column; gap: 12px; }
+}
+
+/* ---- Benefits slideshow ---- */
+@media (max-width: 600px) {
+  .slideshow { height: 300px; }
+  .slide-caption { font-size: .85rem; padding: 40px 16px 16px; }
+  .benefits-mini-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .benefit-mini-item { padding: 10px 6px; font-size: .7rem; }
+  .benefit-mini-icon { font-size: 1.3rem; }
+}
+
+/* ---- Services photo showcase ---- */
+@media (max-width: 640px) {
+  .services-showcase { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .photo-card { aspect-ratio: 1; }
+}
+
+/* ---- Benefits columns ---- */
+@media (max-width: 760px) {
+  .benefits-columns { grid-template-columns: 1fr; }
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 380px) {
+  .benefits-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Gallery ---- */
+@media (max-width: 760px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "featured"
+      "col"
+      "bottom1"
+      "bottom2";
+  }
+  .gallery-col { flex-direction: column; gap: 12px; }
+  .gallery-card-featured img { min-height: 260px; }
+  .gallery-card img          { min-height: 200px; }
+  .gallery-cta-strip { flex-direction: column; gap: 16px; text-align: center; padding: 20px; }
+}
+
+/* ---- WhatsApp banner ---- */
+@media (max-width: 600px) {
+  .wa-banner { padding: 48px 0; }
+  .wa-banner-inner { flex-direction: column; text-align: center; gap: 24px; }
+  .wa-banner-text h2 { font-size: 1.5rem; }
+}
+
+/* ---- Contact section ---- */
+@media (max-width: 760px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+  .contact-form { padding: 24px 20px; }
+}
+
+/* ---- Footer ---- */
+@media (max-width: 760px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-brand img { height: 50px; }
+}
+
+/* ---- Floating WhatsApp button: smaller on mobile ---- */
+@media (max-width: 480px) {
+  .wa-float { width: 52px; height: 52px; bottom: 20px; right: 20px; }
+}
+
+/* ---- Section headings on small screens ---- */
+@media (max-width: 480px) {
+  .section-header h2 { font-size: 1.6rem; }
+  .section-header p  { font-size: .9rem; }
+  .section { padding: 64px 0; }
+}

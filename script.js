@@ -2,6 +2,23 @@
    UNCEDOLWETHU FUNERAL SERVICES — JAVASCRIPT
    ========================================================= */
 
+/* ---- Dark / Light mode toggle ---- */
+(function () {
+  const btn  = document.getElementById('themeToggle');
+  const html = document.documentElement;
+
+  // Apply saved preference or system default on load
+  const saved   = localStorage.getItem('theme');
+  const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  html.setAttribute('data-theme', saved || prefers);
+
+  btn.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+})();
+
 /* ---- Navbar: scroll shadow + active link highlight ---- */
 (function () {
   const navbar = document.getElementById('navbar');
