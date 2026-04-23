@@ -146,8 +146,7 @@ img { max-width: 100%; display: block; }
 .nav-logo img {
   height: 52px;
   width: auto;
-  border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -1114,6 +1113,11 @@ img { max-width: 100%; height: auto; }
   .nav-container { gap: 12px; }
   .theme-toggle  { margin-left: auto; }
   .nav-cta       { display: none; }
+  /* Solid white on mobile — prevents hero gradient bleeding through */
+  .navbar { background: rgba(255,255,255,1); }
+  [data-theme="dark"] .navbar { background: rgba(15,26,18,1); }
+  /* Larger logo on mobile so full text is readable */
+  .nav-logo img { height: 48px; }
 }
 
 /* ---- Hero ---- */
